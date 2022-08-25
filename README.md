@@ -5,20 +5,28 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### Repro step
 
-### Compiles and minifies for production
+Execute command 
 ```
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
+Explorer the dist folder, and open myLib.css.
+You should see something like :
+```css
+@font-face{font-family:Avenir;src:url(/fonts/AvenirLTStd-Roman.4f3c9a2f.otf) format("opentype")}
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The first slash "/" seems to be unnecessary.
+
+When we set `publicPath: ''` in `vue.config.js`, it works fine :
+
+```css
+@font-face{font-family:Avenir;src:url(fonts/AvenirLTStd-Roman.4f3c9a2f.otf) format("opentype")}
+```
+
+### Links
+
+- [Vue CLI publicPath documentation](https://cli.vuejs.org/config/#publicpath)
+- [Vue CLI migration guide & Asset Modules](https://cli.vuejs.org/migrations/migrate-from-v4.html#vue-cli-service)
